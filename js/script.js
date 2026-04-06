@@ -1,10 +1,11 @@
-      // ─── Chat State ──────────────────────────────────────────────────────────────
-      let chatOpen = false;
-      let isLoading = false;
-      const conversationHistory = [];
+// ─── Chat State ──────────────────────────────────────────────────────────────
+let chatOpen = false;
+let isLoading = false;
+const conversationHistory = [];
 
-      // ─── System Prompt ───────────────────────────────────────────────────────────
-      const JES_SYSTEM_PROMPT = `Você é o JES_AI, um assistente especialista no Portal JES (Jogos Escolares Superiores do IFPB). Você responde perguntas sobre o sistema de forma precisa, clara e com um leve tom temático de RPG/games, alinhado ao estilo da apresentação. Use emojis esporadicamente e termos como "aventureiro", "herói", etc. quando fizer sentido, mas sempre priorizando a clareza técnica.
+// ─── System Prompt ───────────────────────────────────────────────────────────
+const JES_SYSTEM_PROMPT = `
+Você é o JES_AI, um assistente especialista no Portal JES (Jogos Escolares Superiores do IFPB). Você responde perguntas sobre o sistema de forma precisa, clara e com um leve tom temático de RPG/games, alinhado ao estilo da apresentação. Use emojis esporadicamente e termos como "aventureiro", "herói", etc. quando fizer sentido, mas sempre priorizando a clareza técnica.
 
 SOBRE O PROJETO:
 O Portal JES é uma aplicação web Django para gerenciar os Jogos Escolares Superiores do IFPB. O projeto também investiga a aplicação do método Privacy by Design (PbD) em IES, resolvendo a lacuna de 79,4% de falha na elicitação de requisitos de privacidade.
@@ -92,103 +93,100 @@ BANCO DE DADOS (principais tabelas):
 
 Responda sempre em português brasileiro. Se não souber algo específico sobre o projeto que não esteja nas informações acima, diga honestamente que não tem essa informação disponível. Nunca invente dados sobre o projeto.`;
 
-      // ─── Toggle Chat ─────────────────────────────────────────────────────────────
-      function toggleChat() {
-        chatOpen = !chatOpen;
-        const win = document.getElementById("jes-chat-window");
-        const icon = document.getElementById("chat-toggle-icon");
-        if (chatOpen) {
-          win.classList.remove("hidden");
-          win.classList.add("flex", "flex-col");
-          icon.textContent = "close";
-          setTimeout(() => document.getElementById("jes-input").focus(), 100);
-          scrollMessages();
-        } else {
-          win.classList.add("hidden");
-          win.classList.remove("flex", "flex-col");
-          icon.textContent = "smart_toy";
-        }
-      }
+// ─── Toggle Chat ─────────────────────────────────────────────────────────────
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById("jes-chat-window");
+  const icon = document.getElementById("chat-toggle-icon");
+  if (chatOpen) {
+    win.classList.remove("hidden");
+    win.classList.add("flex", "flex-col");
+    icon.textContent = "close";
+    setTimeout(() => document.getElementById("jes-input").focus(), 100);
+    scrollMessages();
+  } else {
+    win.classList.add("hidden");
+    win.classList.remove("flex", "flex-col");
+    icon.textContent = "smart_toy";
+  }
+}
 
-      // ─── Key Handler ─────────────────────────────────────────────────────────────
-      function handleKeyDown(e) {
-        if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault();
-          sendMessage();
-        }
-      }
+// ─── Key Handler ─────────────────────────────────────────────────────────────
+function handleKeyDown(e) {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    sendMessage();
+  }
+}
 
-      // ─── Suggestion Shortcut ─────────────────────────────────────────────────────
-      function sendSuggestion(text) {
-        document.getElementById("jes-input").value = text;
-        sendMessage();
-      }
+// ─── Suggestion Shortcut ─────────────────────────────────────────────────────
+function sendSuggestion(text) {
+  document.getElementById("jes-input").value = text;
+  sendMessage();
+}
 
-      // ─── Scroll to bottom ────────────────────────────────────────────────────────
-      function scrollMessages() {
-        const msgs = document.getElementById("jes-messages");
-        setTimeout(() => (msgs.scrollTop = msgs.scrollHeight), 50);
-      }
+// ─── Scroll to bottom ────────────────────────────────────────────────────────
+function scrollMessages() {
+  const msgs = document.getElementById("jes-messages");
+  setTimeout(() => (msgs.scrollTop = msgs.scrollHeight), 50);
+}
 
-      // ─── Add Message to UI ───────────────────────────────────────────────────────
-      function addMessage(role, content) {
-        const msgs = document.getElementById("jes-messages");
-        const isUser = role === "user";
+// ─── Add Message to UI ───────────────────────────────────────────────────────
+function addMessage(role, content) {
+  const msgs = document.getElementById("jes-messages");
+  const isUser = role === "user";
 
-        const wrapper = document.createElement("div");
-        wrapper.className = isUser
-          ? "flex gap-3 items-start flex-row-reverse"
-          : "flex gap-3 items-start";
+  const wrapper = document.createElement("div");
+  wrapper.className = isUser
+    ? "flex gap-3 items-start flex-row-reverse"
+    : "flex gap-3 items-start";
 
-        const avatar = document.createElement("div");
-        avatar.className = isUser
-          ? "w-8 h-8 bg-secondary pixel-border shrink-0 flex items-center justify-center mt-1"
-          : "w-8 h-8 bg-primary pixel-border shrink-0 flex items-center justify-center mt-1";
-        avatar.innerHTML = isUser
-          ? '<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: \'FILL\' 1;">person</span>'
-          : '<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: \'FILL\' 1;">smart_toy</span>';
+  const avatar = document.createElement("div");
+  avatar.className = isUser
+    ? "w-8 h-8 bg-secondary pixel-border shrink-0 flex items-center justify-center mt-1"
+    : "w-8 h-8 bg-primary pixel-border shrink-0 flex items-center justify-center mt-1";
+  avatar.innerHTML = isUser
+    ? '<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: \'FILL\' 1;">person</span>'
+    : '<span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: \'FILL\' 1;">smart_toy</span>';
 
-        const bubble = document.createElement("div");
-        bubble.className = "flex-1";
+  const bubble = document.createElement("div");
+  bubble.className = "flex-1";
 
-        const label = document.createElement("div");
-        label.className = isUser
-          ? "font-pixel text-[8px] text-[#4dc1ff] mb-1 uppercase text-right"
-          : "font-pixel text-[8px] text-[#FFE179] mb-1 uppercase";
-        label.textContent = isUser ? "VOCÊ" : "JES_AI";
+  const label = document.createElement("div");
+  label.className = isUser
+    ? "font-pixel text-[8px] text-[#4dc1ff] mb-1 uppercase text-right"
+    : "font-pixel text-[8px] text-[#FFE179] mb-1 uppercase";
+  label.textContent = isUser ? "VOCÊ" : "JES_AI";
 
-        const text = document.createElement("div");
-        text.className = isUser
-          ? "bg-secondary/20 border-2 border-secondary/40 p-3 text-sm text-white font-body leading-relaxed"
-          : "bg-zinc-900 border-2 border-white/20 p-3 text-sm text-white font-body leading-relaxed";
+  const text = document.createElement("div");
+  text.className = isUser
+    ? "bg-secondary/20 border-2 border-secondary/40 p-3 text-sm text-white font-body leading-relaxed"
+    : "bg-zinc-900 border-2 border-white/20 p-3 text-sm text-white font-body leading-relaxed";
 
-        // Convert markdown-like formatting
-        text.innerHTML = content
-          .replace(
-            /\*\*(.*?)\*\*/g,
-            '<strong class="text-[#84F280]">$1</strong>',
-          )
-          .replace(
-            /`(.*?)`/g,
-            '<code class="bg-zinc-700 px-1 text-[#FFE179] font-mono text-xs">$1</code>',
-          )
-          .replace(/\n/g, "<br>");
+  // Convert markdown-like formatting
+  text.innerHTML = content
+    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-[#84F280]">$1</strong>')
+    .replace(
+      /`(.*?)`/g,
+      '<code class="bg-zinc-700 px-1 text-[#FFE179] font-mono text-xs">$1</code>',
+    )
+    .replace(/\n/g, "<br>");
 
-        bubble.appendChild(label);
-        bubble.appendChild(text);
-        wrapper.appendChild(avatar);
-        wrapper.appendChild(bubble);
-        msgs.appendChild(wrapper);
-        scrollMessages();
-      }
+  bubble.appendChild(label);
+  bubble.appendChild(text);
+  wrapper.appendChild(avatar);
+  wrapper.appendChild(bubble);
+  msgs.appendChild(wrapper);
+  scrollMessages();
+}
 
-      // ─── Typing Indicator ────────────────────────────────────────────────────────
-      function showTyping() {
-        const msgs = document.getElementById("jes-messages");
-        const el = document.createElement("div");
-        el.id = "jes-typing";
-        el.className = "flex gap-3 items-start";
-        el.innerHTML = `
+// ─── Typing Indicator ────────────────────────────────────────────────────────
+function showTyping() {
+  const msgs = document.getElementById("jes-messages");
+  const el = document.createElement("div");
+  el.id = "jes-typing";
+  el.className = "flex gap-3 items-start";
+  el.innerHTML = `
     <div class="w-8 h-8 bg-primary pixel-border shrink-0 flex items-center justify-center mt-1">
       <span class="material-symbols-outlined text-white text-sm" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
     </div>
@@ -200,101 +198,95 @@ Responda sempre em português brasileiro. Se não souber algo específico sobre 
       </div>
       <span class="font-pixel text-[7px] text-white/40 uppercase">JES_AI está digitando...</span>
     </div>`;
-        msgs.appendChild(el);
-        scrollMessages();
-      }
+  msgs.appendChild(el);
+  scrollMessages();
+}
 
-      function hideTyping() {
-        const el = document.getElementById("jes-typing");
-        if (el) el.remove();
-      }
+function hideTyping() {
+  const el = document.getElementById("jes-typing");
+  if (el) el.remove();
+}
 
-      // ─── Send Message ─────────────────────────────────────────────────────────────
-      async function sendMessage() {
-        if (isLoading) return;
-        const input = document.getElementById("jes-input");
-        const userText = input.value.trim();
-        if (!userText) return;
+// ─── Send Message ─────────────────────────────────────────────────────────────
+async function sendMessage() {
+  if (isLoading) return;
+  const input = document.getElementById("jes-input");
+  const userText = input.value.trim();
+  if (!userText) return;
 
-        // Interface
-        document.getElementById("jes-suggestions").style.display = "none";
-        input.value = "";
-        isLoading = true;
-        document.getElementById("jes-send-btn").disabled = true;
-        addMessage("user", userText);
-        showTyping();
+  // Interface
+  document.getElementById("jes-suggestions").style.display = "none";
+  input.value = "";
+  isLoading = true;
+  document.getElementById("jes-send-btn").disabled = true;
+  addMessage("user", userText);
+  showTyping();
 
-        try {
-          const webAppUrl = (typeof CONFIG !== 'undefined') ? CONFIG.webAppUrl : "SUA_URL_AQUI";
-          
-          const response = await fetch(webAppUrl, {
-            method: "POST",
-            body: JSON.stringify({ message: userText }),
-          });
+  try {
+    // Usa a variável global webAppUrl definida no topo do ficheiro
+    const response = await fetch(webAppUrl, {
+      method: "POST",
+      body: JSON.stringify({ message: userText }),
+    });
 
-          const data = await response.json();
-          hideTyping();
+    const data = await response.json();
+    hideTyping();
 
-          if (data.reply) {
-            addMessage("assistant", data.reply);
-          } else {
-            addMessage(
-              "assistant",
-              "⚠️ Ocorreu um erro ao consultar a base de dados.",
-            );
-          }
-        } catch (err) {
-          hideTyping();
-          addMessage("assistant", "⚠️ Falha na conexão com o cérebro da IA.");
-        } finally {
-          isLoading = false;
-          document.getElementById("jes-send-btn").disabled = false;
-          input.focus();
-        }
-      }
+    if (data.reply) {
+      addMessage("assistant", data.reply);
+    } else {
+      addMessage("assistant", "⚠️ Erro na base de dados.");
+    }
+  } catch (err) {
+    hideTyping();
+    addMessage("assistant", "⚠️ Falha na conexão com a IA.");
+  } finally {
+    isLoading = false;
+    document.getElementById("jes-send-btn").disabled = false;
+    input.focus();
+  }
+}
 
-      let lastScroll = 0;
-      window.addEventListener("scroll", () => {
-        const winScroll =
-          document.body.scrollTop || document.documentElement.scrollTop;
-        const height =
-          document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
+let lastScroll = 0;
+window.addEventListener("scroll", () => {
+  const winScroll =
+    document.body.scrollTop || document.documentElement.scrollTop;
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const scrolled = (winScroll / height) * 100;
 
-        const progressBar = document.getElementById("yoshi-progress");
-        const yoshiSprite = document.getElementById("yoshi-sprite");
+  const progressBar = document.getElementById("yoshi-progress");
+  const yoshiSprite = document.getElementById("yoshi-sprite");
 
-        if (progressBar) {
-          progressBar.style.width = scrolled + "%";
-        }
+  if (progressBar) {
+    progressBar.style.width = scrolled + "%";
+  }
 
-        if (yoshiSprite) {
-          if (winScroll > lastScroll) {
-            yoshiSprite.querySelector("img").style.transform = "scaleX(1)";
-          } else if (winScroll < lastScroll) {
-            yoshiSprite.querySelector("img").style.transform = "scaleX(-1)";
-          }
+  if (yoshiSprite) {
+    if (winScroll > lastScroll) {
+      yoshiSprite.querySelector("img").style.transform = "scaleX(1)";
+    } else if (winScroll < lastScroll) {
+      yoshiSprite.querySelector("img").style.transform = "scaleX(-1)";
+    }
 
-          if (Math.abs(winScroll - lastScroll) > 1) {
-            yoshiSprite.classList.add("yoshi-walking");
-          } else {
-            yoshiSprite.classList.remove("yoshi-walking");
-          }
-        }
-        lastScroll = winScroll;
+    if (Math.abs(winScroll - lastScroll) > 1) {
+      yoshiSprite.classList.add("yoshi-walking");
+    } else {
+      yoshiSprite.classList.remove("yoshi-walking");
+    }
+  }
+  lastScroll = winScroll;
+});
+
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
       });
-
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-        
-    
+    }
+  });
+});
