@@ -1,0 +1,1332 @@
+<!doctype html>
+
+<html class="scroll-smooth" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PORTAL JES - Gestão Esportiva Universitária</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Work+Sans:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;family=Press+Start+2P&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="../js/config.js"></script>
+    <script src="../js/script.js"></script>
+    <link href="../css/style.css" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#003908",
+              "on-tertiary-container": "#4d3e00",
+              "on-surface": "#002203",
+              "error-container": "#ffdad6",
+              outline: "#926f6a",
+              surface: "#ecffe4",
+              "on-primary-container": "#ffffff",
+              "tertiary-container": "#cba800",
+              "primary-fixed-dim": "#ffb4aa",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "primary-fixed": "#ffdad5",
+              "on-tertiary-fixed-variant": "#554500",
+              "surface-container-low": "#d5ffcb",
+              "on-secondary-fixed-variant": "#004c6c",
+              "surface-bright": "#ecffe4",
+              secondary: "#00658e",
+              "tertiary-fixed-dim": "#ebc300",
+              "surface-container-highest": "#8cfb87",
+              "secondary-fixed-dim": "#83cfff",
+              "secondary-fixed": "#c7e7ff",
+              "surface-variant": "#8cfb87",
+              tertiary: "#715c00",
+              "secondary-container": "#4dc1ff",
+              "on-secondary-fixed": "#001e2e",
+              "on-tertiary-fixed": "#231b00",
+              "on-background": "#002203",
+              "on-tertiary": "#ffffff",
+              error: "#ba1a1a",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb4aa",
+              "on-surface-variant": "#5d3f3b",
+              "on-primary-fixed": "#410001",
+              primary: "#be000c",
+              "outline-variant": "#e7bdb7",
+              "surface-dim": "#84f280",
+              "on-secondary-container": "#004c6c",
+              "surface-tint": "#c0000c",
+              "on-primary": "#ffffff",
+              "surface-container": "#bbffb1",
+              "primary-container": "#e52521",
+              "tertiary-fixed": "#ffe179",
+              background: "#ecffe4",
+              "on-secondary": "#ffffff",
+              "surface-container-high": "#9cff94",
+              "inverse-on-surface": "#c9ffbf",
+              "on-primary-fixed-variant": "#930007",
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Work Sans"],
+              label: ["Space Grotesk"],
+              pixel: ["'Press Start 2P'", "cursive"],
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+          },
+        },
+      };
+
+      
+    </script>
+
+  </head>
+  <body
+    class="bg-surface font-body text-on-surface select-none overflow-x-hidden"
+  >
+    <!-- Progress Bar (Health Bar) with Yoshi -->
+    <div
+      class="fixed top-0 left-0 w-full h-10 bg-black z-[100] border-b-2 border-black"
+    >
+      <div class="h-full relative" id="yoshi-progress">
+        <div
+          class="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 flex items-center justify-center"
+          id="yoshi-sprite"
+        >
+          <img
+            alt="Yoshi Running"
+            class="w-10 h-10"
+            src="../img/yoshi.png"
+          />
+          <div
+            class="absolute -top-1 right-0 w-2 h-2 bg-[#be000c] rounded-full animate-ping"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <!-- Top Navigation Shell -->
+    <header
+      class="fixed top-6 left-0 w-full z-50 flex justify-between items-center px-6 h-20 bg-[#ECFFE4] dark:bg-emerald-950 border-b-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]"
+    >
+      <div
+        class="text-2xl font-black text-[#BE000C] dark:text-red-500 italic font-headline uppercase tracking-widest"
+      >
+        PORTAL JES
+      </div>
+      <nav class="hidden md:flex gap-8">
+        <a
+          class="nav-link text-black dark:text-white opacity-80 hover:-translate-y-1 transition-all duration-150 font-headline uppercase tracking-widest text-sm"
+          href="#inicio"
+          >INÍCIO</a
+        >
+        <a
+          class="nav-link text-black dark:text-white opacity-80 hover:-translate-y-1 transition-all duration-150 font-headline uppercase tracking-widest text-sm"
+          href="#personagens"
+          >PERSONAGENS</a
+        >
+        <a
+          class="nav-link text-black dark:text-white opacity-80 hover:-translate-y-1 transition-all duration-150 font-headline uppercase tracking-widest text-sm"
+          href="#desafios"
+          >DESAFIOS</a
+        >
+        <a
+          class="nav-link text-black dark:text-white opacity-80 hover:-translate-y-1 transition-all duration-150 font-headline uppercase tracking-widest text-sm"
+          href="#metas"
+          >METAS</a
+        >
+        <a
+          class="nav-link text-black dark:text-white opacity-80 hover:-translate-y-1 transition-all duration-150 font-headline uppercase tracking-widest text-sm"
+          href="#perguntas"
+          >PERGUNTAS</a
+        >
+      </nav>
+      <div class="flex gap-4">
+        <span
+          class="material-symbols-outlined text-[#BE000C] cursor-pointer hover:scale-110 transition-transform"
+          >monetization_on</span
+        >
+        <span
+          class="material-symbols-outlined text-[#BE000C] cursor-pointer hover:scale-110 transition-transform"
+          >schedule</span
+        >
+      </div>
+      <div class="bg-[#84F280] h-2 w-full absolute bottom-0 left-0"></div>
+    </header>
+    <!-- Main Content -->
+    <main class="pt-24">
+      <!-- Hero Section: World 1-1 -->
+      <section
+        class="relative min-h-[870px] flex flex-col items-center justify-center px-6 py-20 bg-gradient-to-br from-[#4dc1ff] to-[#ecffe4]"
+        id="inicio"
+      >
+        <div class="absolute top-20 left-10 opacity-20 hidden lg:block">
+          <div class="w-24 h-12 bg-white pixel-border"></div>
+        </div>
+        <div class="absolute top-40 right-20 opacity-20 hidden lg:block">
+          <div class="w-32 h-16 bg-white pixel-border"></div>
+        </div>
+        <div class="text-center z-10 max-w-4xl">
+          <h1
+            class="font-headline font-black text-6xl md:text-9xl text-primary mb-6 tracking-tighter uppercase [text-shadow:6px_6px_0px_#000]"
+          >
+            PORTAL JES
+          </h1>
+          <p
+            class="font-headline text-xl md:text-3xl text-secondary font-bold uppercase mb-12 bg-white/50 inline-block px-4 py-2"
+          >
+            Otimizando a Gestão Esportiva Universitária
+          </p>
+          <div
+            class="flex flex-col md:flex-row gap-6 justify-center items-center"
+          >
+            <button
+              class="jump-hover bg-primary text-on-primary px-10 py-6 text-2xl font-headline font-black uppercase pixel-border shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] flex items-center gap-4 active:translate-y-2 active:shadow-none transition-all"
+            >
+              <span>START GAME</span>
+              <span
+                class="material-symbols-outlined text-4xl"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >play_arrow</span
+              >
+            </button>
+            <button
+              class="jump-hover bg-tertiary text-on-tertiary px-8 py-4 text-xl font-headline font-bold uppercase pixel-border shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-1 transition-all"
+            >
+              CONTROLS
+            </button>
+          </div>
+        </div>
+        <!-- Ground -->
+        <div
+          class="absolute bottom-0 left-0 w-full h-16 bg-[#BE000C] border-t-8 border-black flex"
+        >
+          <div
+            class="w-full h-full opacity-20"
+            style="
+              background-image:
+                linear-gradient(90deg, transparent 50%, rgba(0, 0, 0, 0.5) 50%),
+                linear-gradient(rgba(0, 0, 0, 0.5) 50%, transparent 50%);
+              background-size: 32px 32px;
+            "
+          ></div>
+        </div>
+        <!-- Navigation Buttons -->
+        <a
+          class="nav-btn absolute bottom-24 right-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#personagens"
+        >
+          PRÓXIMA FASE
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_forward</span
+          >
+        </a>
+      </section>
+      <!-- Pipe Divider -->
+      <div class="relative h-24 bg-surface flex justify-center">
+        <div
+          class="absolute -top-12 w-48 h-36 bg-[#45AD26] border-4 border-black pipe-shadow z-20 flex items-center justify-center"
+        >
+          <div
+            class="w-full h-4 bg-[#8CFB87] absolute top-2 border-y-2 border-black/20"
+          ></div>
+        </div>
+      </div>
+      <!-- Stakeholders Section -->
+      <section class="py-24 px-6 bg-surface relative" id="personagens">
+        <div class="max-w-7xl mx-auto">
+          <div class="mb-16 text-center">
+            <h2
+              class="font-headline text-4xl md:text-6xl font-black text-on-surface uppercase mb-4"
+            >
+              PERSONAGENS PRINCIPAIS
+            </h2>
+            <p class="text-xl text-on-surface-variant font-medium">
+              Os heróis que movem o esporte no IFPB
+            </p>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mb-20"
+          >
+            <!-- Card 1 -->
+            <div
+              class="bg-surface-container-low p-8 pixel-border transition-all duration-300 tactile-hover"
+            >
+              <div class="mb-6 flex justify-between items-start">
+                <span
+                  class="material-symbols-outlined text-primary text-6xl"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >nutrition</span
+                >
+                <span
+                  class="bg-tertiary text-on-tertiary px-3 py-1 font-headline text-xs font-bold uppercase"
+                  >CLIENTE</span
+                >
+              </div>
+              <h3 class="font-headline text-2xl font-black mb-4 uppercase">
+                Reitoria &amp; Coordenação
+              </h3>
+              <p class="text-on-surface-variant leading-relaxed mb-6">
+                Responsáveis pela governança e fomento das atividades físicas
+                institucionais.
+              </p>
+              <div class="h-2 w-full bg-surface-dim">
+                <div class="h-full bg-primary w-4/5"></div>
+              </div>
+            </div>
+            <!-- Card 2 -->
+            <div
+              class="bg-surface-container-low p-8 pixel-border transition-all duration-300 tactile-hover"
+            >
+              <div class="mb-6 flex justify-between items-start">
+                <span
+                  class="material-symbols-outlined text-secondary text-6xl"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >nutrition</span
+                >
+                <span
+                  class="bg-secondary text-on-secondary px-3 py-1 font-headline text-xs font-bold uppercase"
+                  >USUÁRIO</span
+                >
+              </div>
+              <h3 class="font-headline text-2xl font-black mb-4 uppercase">
+                Atletas &amp; Capitães
+              </h3>
+              <p class="text-on-surface-variant leading-relaxed mb-6">
+                O coração do JES. Precisam de agilidade e transparência em suas
+                inscrições.
+              </p>
+              <div class="h-2 w-full bg-surface-dim">
+                <div class="h-full bg-secondary w-full"></div>
+              </div>
+            </div>
+            <!-- Card 3 -->
+            <div
+              class="bg-surface-container-low p-8 pixel-border transition-all duration-300 tactile-hover"
+            >
+              <div class="mb-6 flex justify-between items-start">
+                <span
+                  class="material-symbols-outlined text-tertiary text-6xl"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >nutrition</span
+                >
+                <span
+                  class="bg-tertiary text-on-tertiary px-3 py-1 font-headline text-xs font-bold uppercase"
+                  >ENTIDADES</span
+                >
+              </div>
+              <h3 class="font-headline text-2xl font-black mb-4 uppercase">
+                Atléticas Acadêmicas
+              </h3>
+              <p class="text-on-surface-variant leading-relaxed mb-6">
+                Organização e representatividade estudantil em cada campus do
+                IFPB.
+              </p>
+              <div class="h-2 w-full bg-surface-dim">
+                <div class="h-full bg-tertiary w-3/4"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <a
+          class="nav-btn absolute bottom-8 left-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#inicio"
+        >
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_back</span
+          >
+          FASE ANTERIOR
+        </a>
+        <a
+          class="nav-btn absolute bottom-8 right-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#desafios"
+        >
+          PRÓXIMA FASE
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_forward</span
+          >
+        </a>
+      </section>
+      <!-- Bowser's Castle Section -->
+      <section
+        class="py-32 px-6 bg-black text-white relative overflow-hidden"
+        id="desafios"
+      >
+        <div
+          class="absolute inset-0 opacity-10"
+          style="
+            background-image: radial-gradient(
+              circle,
+              #333 1px,
+              transparent 1px
+            );
+            background-size: 20px 20px;
+          "
+        ></div>
+        <div class="max-w-5xl mx-auto relative z-10 mb-20">
+          <div class="flex flex-col items-center mb-16">
+            <div
+              class="bg-primary-container p-4 pixel-border-white mb-8 animate-pulse"
+            >
+              <span class="material-symbols-outlined text-6xl text-white"
+                >castle</span
+              >
+            </div>
+            <h2
+              class="font-headline text-4xl md:text-7xl font-black text-center uppercase tracking-tighter text-primary"
+            >
+              O CASTELO DOS PROBLEMAS
+            </h2>
+            <div class="w-32 h-2 bg-primary mt-4"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div
+              class="border-4 border-white p-8 bg-zinc-900 hover:border-primary transition-all duration-300 cursor-pointer shadow-none hover:shadow-[8px_8px_0px_0px_rgba(229,37,33,0.3)] tactile-hover"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <span class="material-symbols-outlined text-error text-4xl"
+                  >warning</span
+                >
+                <h4 class="font-headline text-xl font-bold uppercase">
+                  PROCESSOS MANUAIS
+                </h4>
+              </div>
+              <p class="text-zinc-400 font-body text-lg leading-relaxed">
+                O caos de planilhas e papéis que geram erros e lentidão na
+                homologação das equipes.
+              </p>
+            </div>
+            <div
+              class="border-4 border-white p-8 bg-zinc-900 hover:border-primary transition-all duration-300 cursor-pointer shadow-none hover:shadow-[8px_8px_0px_0px_rgba(229,37,33,0.3)] tactile-hover"
+            >
+              <div class="flex items-center gap-4 mb-6">
+                <span class="material-symbols-outlined text-error text-4xl"
+                  >lock_open</span
+                >
+                <h4 class="font-headline text-xl font-bold uppercase">
+                  79,4% FALHA PRIVACIDADE
+                </h4>
+              </div>
+              <p class="text-zinc-400 font-body text-lg leading-relaxed">
+                Risco crítico de exposição de dados sensíveis dos alunos em
+                Instituições de Ensino Superior.
+              </p>
+            </div>
+            <div
+              class="md:col-span-2 border-4 border-primary p-12 bg-zinc-900 flex flex-col md:flex-row items-center gap-8 hover:border-primary transition-all duration-300 cursor-pointer shadow-none hover:shadow-[8px_8px_0px_0px_rgba(229,37,33,0.3)] tactile-hover"
+            >
+              <div class="text-6xl font-headline font-black text-primary">
+                BOSS AREA
+              </div>
+              <p
+                class="text-2xl text-white text-center md:text-left font-medium"
+              >
+                A falta de integração com o ecossistema digital do IFPB isola o
+                esporte da vida acadêmica formal.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <a
+          class="nav-btn !bg-zinc-800 !text-white !border-white pixel-border-white absolute bottom-8 left-8 hover:-translate-y-2 jump-hover"
+          href="#personagens"
+        >
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_back</span
+          >
+          FASE ANTERIOR
+        </a>
+        <a
+          class="nav-btn !bg-zinc-800 !text-white !border-white pixel-border-white absolute bottom-8 right-8 hover:-translate-y-2 jump-hover"
+          href="#metas"
+        >
+          PRÓXIMA FASE
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_forward</span
+          >
+        </a>
+      </section>
+      <!-- Power-Ups Section -->
+      <section class="py-24 px-6 bg-surface-container-high relative" id="metas">
+        <div class="max-w-7xl mx-auto">
+          <div
+            class="flex flex-col md:flex-row items-end justify-between mb-16 gap-4"
+          >
+            <div class="max-w-2xl">
+              <h2
+                class="font-headline text-4xl md:text-6xl font-black text-on-surface uppercase mb-4 leading-tight"
+              >
+                POWER-UPS DE GESTÃO
+              </h2>
+              <p class="text-xl text-on-surface-variant font-medium">
+                Evoluindo a experiência esportiva com tecnologia de ponta.
+              </p>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="w-12 h-12 bg-tertiary pixel-border flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-on-tertiary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >star</span
+                >
+              </div>
+              <div
+                class="w-12 h-12 bg-primary pixel-border flex items-center justify-center"
+              >
+                <span
+                  class="material-symbols-outlined text-on-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >local_fire_department</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div
+              class="bg-white p-10 pixel-border shadow-[12px_12px_0px_0px_rgba(0,101,142,0.1)] flex gap-8 transition-all duration-300 cursor-pointer tactile-hover"
+            >
+              <div class="shrink-0">
+                <div
+                  class="w-20 h-20 bg-secondary flex items-center justify-center pixel-border"
+                >
+                  <span class="material-symbols-outlined text-white text-4xl"
+                    >bolt</span
+                  >
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="font-headline text-3xl font-black text-secondary mb-4 uppercase"
+                >
+                  90% REDUÇÃO DE TEMPO
+                </h3>
+                <p class="text-on-surface-variant text-lg">
+                  Automação total do fluxo de inscrição, desde a submissão até o
+                  chaveamento automático das partidas.
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-white p-10 pixel-border shadow-[12px_12px_0px_0px_rgba(113,92,0,0.1)] flex gap-8 transition-all duration-300 cursor-pointer tactile-hover"
+            >
+              <div class="shrink-0">
+                <div
+                  class="w-20 h-20 bg-tertiary flex items-center justify-center pixel-border"
+                >
+                  <span class="material-symbols-outlined text-white text-4xl"
+                    >shield</span
+                  >
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="font-headline text-3xl font-black text-tertiary mb-4 uppercase"
+                >
+                  PRIVACY BY DESIGN
+                </h3>
+                <p class="text-on-surface-variant text-lg">
+                  Conformidade total com a LGPD, garantindo que os dados dos
+                  atletas estejam protegidos sob sete chaves.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="mt-12 bg-primary p-8 md:p-16 pixel-border text-center mb-24"
+          >
+            <h3
+              class="font-headline text-3xl md:text-5xl font-black text-white uppercase mb-8"
+            >
+              QUER ESSA POWER-UP NO SEU CAMPUS?
+            </h3>
+            <button
+              class="bg-white text-primary px-12 py-5 text-2xl font-headline font-black uppercase pixel-border shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)] jump-hover"
+            >
+              COLETAR ITEM
+            </button>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <a
+          class="nav-btn absolute bottom-8 left-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#desafios"
+        >
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_back</span
+          >
+          FASE ANTERIOR
+        </a>
+        <a
+          class="nav-btn absolute bottom-8 right-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#perguntas"
+        >
+          PRÓXIMA FASE
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_forward</span
+          >
+        </a>
+      </section>
+      <!-- RPG FAQ Section -->
+      <section
+        class="py-24 px-6 bg-secondary-container relative"
+        id="perguntas"
+      >
+        <div class="max-w-4xl mx-auto mb-20">
+          <div class="mb-12 bg-black p-6 pixel-border-white">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-16 h-16 bg-white shrink-0 overflow-hidden flex items-center justify-center"
+              >
+                <img
+                  alt="Hero"
+                  class="w-12 h-12"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxHGZZIrQU-wWUf-nAogcgvyr-KQoOk2HucynXz7zMUCIuosu9PK5d4fKpIqbnyja6jeBEoUWNA-UE209DvL9ayOVRfxx3gxN3sjeMzmbc7lrgOLu0TwE3ndLM_8Kljf9s8ObO-Um5IWQjjz7O6e8itsjMqeocSzzAZ5vDevC78J5Sz9z-_n_yJfmTojWYw1iQS3XFVrbu9fhpfs5LR6HnYmMPrElnmsjzo3ntP6_7qNLVL_EnIX_P561lco5Dy9FdkjGoU1oRjrY"
+                />
+              </div>
+              <div class="flex-1">
+                <div
+                  class="text-primary font-headline font-bold uppercase text-xs mb-1"
+                >
+                  HERO: JES_DEV
+                </div>
+                <div class="h-4 bg-white border-2 border-white">
+                  <div class="h-full bg-primary w-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2
+            class="font-headline text-4xl font-black text-center uppercase mb-12 text-on-secondary-container"
+          >
+            BORDAS DO CONHECIMENTO (FAQ)
+          </h2>
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-1"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-1">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: COMO É FEITA A CONEXÃO COM A 'FORJA' DO SUAP?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Utilizamos encantamentos de API REST com autenticação
+                      OAuth2, permitindo que o sistema valide o nível acadêmico
+                      de cada player em tempo real.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-2"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-2">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: COMO PROTEGEMOS OS 'SCROLLS' DE DADOS (LGPD)?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Aplicamos o 'Privacy by Design'. Os dados são
+                      criptografados com magias de alto nível, garantindo que
+                      apenas guardiões autorizados acessem as informações.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-3"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-3">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: O SISTEMA AGUENTA UM 'BOSS RAID' DE ACESSOS?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Com escalabilidade horizontal em nuvem, nossos
+                      servidores se multiplicam conforme a horda de inscritos
+                      cresce, mantendo o ping baixo e a performance alta.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-4"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-4">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: EXISTEM DIFERENTES CLASSES DE USUÁRIOS?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Sim! Temos o 'Atleta' (DPS), o 'Capitão' (Líder da
+                      Party) e o 'Coordenador' (Game Master), cada um com
+                      habilidades e permissões únicas no painel.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-5"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-5">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: O MAPA É ACESSÍVEL EM DISPOSITIVOS MOBILE?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Com design responsivo, a interface se adapta a qualquer
+                      tela, seja um pergaminho digital ou um smartphone de
+                      última geração.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+              <input
+                class="faq-item-trigger hidden"
+                id="faq-6"
+                type="checkbox"
+              />
+              <div
+                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
+              >
+                <label class="block cursor-pointer p-6" for="faq-6">
+                  <div
+                    class="faq-card-header flex justify-between items-center"
+                  >
+                    <p
+                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
+                    >
+                      Q: QUAIS PROTOCOLOS DE SEGURANÇA BLOQUEIAM OS MIMICS?
+                    </p>
+                    <span
+                      class="material-symbols-outlined arrow-icon text-primary-fixed"
+                      >expand_more</span
+                    >
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div
+                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
+                    >
+                      A: Implementamos HTTPS, firewalls de aplicação e
+                      sanitização de inputs para banir qualquer tentativa de SQL
+                      Injection ou ataques das trevas.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <a
+          class="nav-btn absolute bottom-8 left-8 pixel-border hover:-translate-y-2 jump-hover"
+          href="#metas"
+        >
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >arrow_back</span
+          >
+          FASE ANTERIOR
+        </a>
+        <button
+          class="nav-btn absolute bottom-8 right-8 pixel-border jump-hover"
+          id="btn-fim-de-jogo"
+        >
+          FIM DE JOGO
+          <span class="material-symbols-outlined !text-xl md:!text-2xl"
+            >flag</span
+          >
+        </button>
+      </section>
+    </main>
+    <!-- Footer: Level 1-1 Scene -->
+    <footer
+      class="relative w-full pt-32 pb-12 px-8 overflow-hidden bg-[#5C94FC] border-t-8 border-black"
+    >
+      <div
+        class="absolute top-10 left-20 w-16 h-8 bg-white opacity-90 cloud-pixel"
+      ></div>
+      <div
+        class="absolute top-24 right-1/4 w-24 h-12 bg-white opacity-80 cloud-pixel"
+      ></div>
+      <div
+        class="absolute bottom-16 left-1/2 -translate-x-1/2 flex items-end gap-16"
+      >
+        <div class="w-32 h-12 bush-pixel relative">
+          <div
+            class="absolute -top-4 left-4 w-24 h-4 bush-pixel opacity-80"
+          ></div>
+        </div>
+        <div class="w-24 h-8 bush-pixel"></div>
+        <div class="w-24 h-8 bush-pixel hidden md:block"></div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-full h-16 bg-[#e45c10] border-t-4 border-black"
+        style="
+          background-image:
+            linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+            linear-gradient(0deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+          background-size: 16px 16px;
+        "
+      ></div>
+      <div
+        class="relative z-10 flex flex-col md:flex-row justify-between items-end gap-8 flex-wrap"
+      >
+        <!-- Combined Credits/Participants Card -->
+        <div
+          class="bg-black/80 p-6 pixel-border-white backdrop-blur-sm w-full md:max-w-lg"
+        >
+          <div
+            class="text-xl font-black text-[#84F280] font-headline uppercase mb-6 tracking-tighter"
+          >
+            PROJECT INFO
+          </div>
+          <div class="relative">
+            <input
+              checked=""
+              class="footer-tab-trigger hidden"
+              id="tab-credits"
+              name="footer-tabs"
+              type="radio"
+            />
+            <label
+              class="inline-block px-4 py-2 font-headline text-[10px] bg-black text-white border-2 border-white cursor-pointer mr-1 transition-all"
+              for="tab-credits"
+              >CREDITS</label
+            >
+            <input
+              class="footer-tab-trigger hidden"
+              id="tab-participants"
+              name="footer-tabs"
+              type="radio"
+            />
+            <label
+              class="inline-block px-4 py-2 font-headline text-[10px] bg-black text-white border-2 border-white cursor-pointer transition-all"
+              for="tab-participants"
+              >PARTICIPANTS</label
+            >
+            <div class="footer-content-area mt-4 min-h-[60px]">
+              <div class="footer-tab-content" id="content-credits">
+                <p
+                  class="text-white font-headline font-bold uppercase text-[10px] leading-relaxed"
+                >
+                  Arthur Felipe, Davi Holanda and Josef Ian
+                </p>
+              </div>
+              <div class="footer-tab-content" id="content-participants">
+                <p
+                  class="text-white font-headline font-bold uppercase text-[10px] leading-relaxed"
+                >
+                  Arthur Felipe, Caio da Costa, Davi Holanda, Josef Ian,
+                  Francisco Miguel, Luis Eduardo
+                </p>
+              </div>
+            </div>
+          </div>
+          <p
+            class="text-[9px] text-white/60 font-headline font-bold uppercase mt-6"
+          >
+            © 2024 JES GESTÃO ESPORTIVA. INSPIRED BY WORLD 1-1.
+          </p>
+        </div>
+        <div class="bg-black/80 p-6 pixel-border-white backdrop-blur-sm">
+          <div class="flex gap-8 mb-4">
+            <div>
+              <div class="text-[10px] font-pixel text-[#FFE179] uppercase">
+                SCORE
+              </div>
+              <div class="text-lg font-pixel text-white">004580</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-pixel text-[#FFE179] uppercase">
+                WORLD
+              </div>
+              <div class="text-lg font-pixel text-white">1-1</div>
+            </div>
+            <div>
+              <div class="text-[10px] font-pixel text-[#FFE179] uppercase">
+                TIME
+              </div>
+              <div class="text-lg font-pixel text-white">365</div>
+            </div>
+          </div>
+          <div class="flex gap-2">
+            <div class="w-6 h-6 bg-[#be000c] pixel-border"></div>
+            <div class="w-6 h-6 bg-[#00658e] pixel-border"></div>
+            <div class="w-6 h-6 bg-[#45AD26] pixel-border"></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+        <div id="jes-chat-widget" class="fixed bottom-10 right-10 z-[200]">
+      <!-- Toggle Button -->
+      <button
+        id="jes-chat-toggle"
+        onclick="toggleChat()"
+        class="w-16 h-16 bg-primary text-white pixel-border shadow-[4px_4px_0px_0px_rgba(0,0,0,0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all relative group"
+      >
+        <span
+          id="chat-toggle-icon"
+          class="material-symbols-outlined text-3xl"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >smart_toy</span
+        >
+        <div
+          class="absolute bottom-[72px] right-0 bg-black text-white px-3 py-2 pixel-border-white opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap font-pixel text-[7px] uppercase"
+        >
+          FALE COM JES_AI
+        </div>
+        <div
+          class="absolute -top-1 -right-1 w-4 h-4 bg-[#84F280] pixel-border animate-pulse"
+        ></div>
+      </button>
+
+      <!-- Chat Window -->
+      <div
+        id="jes-chat-window"
+        class="hidden absolute bottom-20 right-0 w-[360px] md:w-[420px] bg-black pixel-border-white flex flex-col overflow-hidden"
+        style="height: 540px; box-shadow: 8px 8px 0px 0px rgba(0, 0, 0, 0.6)"
+      >
+        <!-- Header -->
+        <div
+          class="bg-black border-b-4 border-white p-4 flex items-center gap-3 shrink-0"
+        >
+          <div
+            class="w-10 h-10 bg-primary pixel-border flex items-center justify-center shrink-0"
+          >
+            <span
+              class="material-symbols-outlined text-white text-xl"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >smart_toy</span
+            >
+          </div>
+          <div class="flex-1">
+            <div
+              class="font-pixel text-[10px] text-[#84F280] uppercase leading-none"
+            >
+              NPC DISPONÍVEL
+            </div>
+            <div
+              class="font-headline text-base font-black text-white uppercase tracking-wide"
+            >
+              JES_AI
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-2 h-2 bg-[#84F280] rounded-full animate-pulse"></div>
+            <span class="font-pixel text-[8px] text-[#84F280]">ONLINE</span>
+          </div>
+          <button
+            onclick="toggleChat()"
+            class="text-white/60 hover:text-white transition-colors ml-2"
+          >
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+
+        <!-- HP Bar Decoration -->
+        <div
+          class="bg-zinc-900 px-4 py-2 border-b-2 border-white/10 shrink-0 flex items-center gap-3"
+        >
+          <span class="font-pixel text-[7px] text-[#FFE179] uppercase"
+            >KNOWLEDGE HP</span
+          >
+          <div class="flex-1 h-3 bg-zinc-700 border border-white/20">
+            <div class="h-full bg-[#84F280]" style="width: 100%"></div>
+          </div>
+          <span class="font-pixel text-[7px] text-white">999/999</span>
+        </div>
+
+        <!-- Messages Area -->
+        <div
+          id="jes-messages"
+          class="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin"
+          style="scrollbar-color: #be000c #111"
+        >
+          <!-- Initial welcome message -->
+          <div class="flex gap-3 items-start">
+            <div
+              class="w-8 h-8 bg-primary pixel-border shrink-0 flex items-center justify-center mt-1"
+            >
+              <span
+                class="material-symbols-outlined text-white text-sm"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >smart_toy</span
+              >
+            </div>
+            <div class="flex-1">
+              <div class="font-pixel text-[8px] text-[#FFE179] mb-1 uppercase">
+                JES_AI
+              </div>
+              <div
+                class="bg-zinc-900 border-2 border-white/20 p-3 text-sm text-white font-body leading-relaxed"
+              >
+                ▶ Saudações, aventureiro! Sou o
+                <strong class="text-[#84F280]">JES_AI</strong>, guardião do
+                conhecimento sobre o Portal JES.<br /><br />
+                Pode me perguntar sobre
+                <span class="text-[#FFE179]">funcionalidades</span>,
+                <span class="text-[#4dc1ff]">arquitetura</span>,
+                <span class="text-[#84F280]">permissões</span>,
+                <span class="text-primary">regras de negócio</span> ou qualquer
+                aspecto do sistema!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested Questions -->
+        <div
+          id="jes-suggestions"
+          class="px-4 pb-2 shrink-0 border-t-2 border-white/10 pt-3"
+        >
+          <div class="font-pixel text-[7px] text-white/40 uppercase mb-2">
+            PERGUNTAS RÁPIDAS
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button
+              onclick="sendSuggestion('Como funciona o sistema de permissões?')"
+              class="bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] font-headline uppercase px-2 py-1 border border-white/20 hover:border-white/60 transition-all active:scale-95"
+            >
+              PERMISSÕES
+            </button>
+            <button
+              onclick="sendSuggestion('Quais são as tecnologias usadas?')"
+              class="bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] font-headline uppercase px-2 py-1 border border-white/20 hover:border-white/60 transition-all active:scale-95"
+            >
+              TECNOLOGIAS
+            </button>
+            <button
+              onclick="sendSuggestion('Como funciona o login por matrícula?')"
+              class="bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] font-headline uppercase px-2 py-1 border border-white/20 hover:border-white/60 transition-all active:scale-95"
+            >
+              LOGIN
+            </button>
+            <button
+              onclick="sendSuggestion('O que é Privacy by Design no projeto?')"
+              class="bg-zinc-800 hover:bg-zinc-700 text-white text-[10px] font-headline uppercase px-2 py-1 border border-white/20 hover:border-white/60 transition-all active:scale-95"
+            >
+              PRIVACY
+            </button>
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="p-4 border-t-4 border-white shrink-0 bg-zinc-950">
+          <div class="flex gap-2 items-end">
+            <div class="flex-1 relative">
+              <textarea
+                id="jes-input"
+                class="w-full bg-zinc-800 text-white font-body text-sm p-3 border-2 border-white/30 focus:border-white outline-none resize-none leading-relaxed placeholder:text-white/30"
+                placeholder="Digite sua pergunta..."
+                rows="2"
+                onkeydown="handleKeyDown(event)"
+              ></textarea>
+            </div>
+            <button
+              id="jes-send-btn"
+              onclick="sendMessage()"
+              class="bg-primary text-white pixel-border px-4 py-3 font-headline font-black text-sm uppercase hover:scale-105 active:scale-95 transition-all shrink-0 flex items-center gap-1 self-stretch"
+            >
+              <span
+                class="material-symbols-outlined text-xl"
+                style="font-variation-settings: &quot;FILL&quot; 1"
+                >send</span
+              >
+            </button>
+          </div>
+          <div class="font-pixel text-[7px] text-white/20 mt-2 uppercase">
+            ENTER para enviar · SHIFT+ENTER para nova linha
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="fixed inset-0 z-[200] castle-brick flex items-center justify-center overflow-hidden"
+      id="game-over-overlay"
+    >
+      <div
+        class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20"
+        style="
+          background-image: repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.2) 0px,
+            rgba(0, 0, 0, 0.2) 1px,
+            transparent 1px,
+            transparent 2px
+          );
+          background-size: 100% 2px;
+        "
+      ></div>
+      <div
+        class="relative w-full h-full max-w-4xl mx-auto px-6 overflow-hidden flex flex-col items-center"
+      >
+        <div
+          class="credits-scroll flex flex-col items-center text-center py-20"
+        >
+          <h2
+            class="font-pixel text-3xl md:text-5xl text-white mb-20 tracking-widest leading-loose"
+          >
+            GAME OVER<br /><span class="text-[#84F280] text-xl md:text-2xl"
+              >THANKS FOR PLAYING!</span
+            >
+          </h2>
+          <div class="space-y-32">
+            <div class="group">
+              <p class="font-pixel text-[#FFE179] text-xs md:text-sm mb-6">
+                CREDITS
+              </p>
+              <p
+                class="font-pixel text-white text-base md:text-xl leading-loose"
+              >
+                ARTHUR FELIPE
+              </p>
+              <p
+                class="font-pixel text-white text-base md:text-xl leading-loose"
+              >
+                DAVI HOLANDA
+              </p>
+              <p
+                class="font-pixel text-white text-base md:text-xl leading-loose"
+              >
+                JOSEF IAN
+              </p>
+            </div>
+            <div class="group">
+              <p class="font-pixel text-[#FFE179] text-xs md:text-sm mb-6">
+                PROJECT PARTICIPANTS
+              </p>
+              <div class="space-y-4">
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  ARTHUR FELIPE
+                </p>
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  CAIO DA COSTA
+                </p>
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  DAVI HOLANDA
+                </p>
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  JOSEF IAN
+                </p>
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  FRANCISCO MIGUEL
+                </p>
+                <p class="font-pixel text-white text-sm md:text-lg">
+                  LUIS EDUARDO
+                </p>
+              </div>
+            </div>
+            <div class="pt-20">
+              <p class="font-pixel text-white text-[8px] uppercase">
+                Portal JES © 2024
+              </p>
+              <p class="font-pixel text-white text-[8px] uppercase mt-2">
+                The quest for management continues...
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Close Button -->
+        <button
+          class="fixed bottom-12 bg-primary text-white font-pixel text-[10px] md:text-xs px-8 py-4 pixel-border shadow-[4px_4px_0px_0px_rgba(255,255,255,0.2)] jump-hover hover:bg-red-700 transition-colors z-[210]"
+          id="btn-close-overlay"
+        >
+          CLOSE (X) / RESTART
+        </button>
+      </div>
+    </div>
+
+    <script>
+
+                 // Scroll Spy functionality
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      function updateActiveLink() {
+        let current = "";
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          // Adjust threshold for header height (80px header + 24px top offset)
+          if (window.scrollY >= sectionTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove(
+            "text-[#BE000C]",
+            "border-b-4",
+            "border-[#BE000C]",
+            "pb-1",
+            "opacity-100",
+          );
+          link.classList.add("text-black", "dark:text-white", "opacity-80");
+
+          if (
+            link.getAttribute("href") &&
+            link.getAttribute("href").includes(current) &&
+            current !== ""
+          ) {
+            link.classList.add(
+              "text-[#BE000C]",
+              "border-b-4",
+              "border-[#BE000C]",
+              "pb-1",
+              "opacity-100",
+            );
+            link.classList.remove(
+              "text-black",
+              "dark:text-white",
+              "opacity-80",
+            );
+          }
+        });
+      }
+      
+
+
+
+      window.addEventListener("scroll", updateActiveLink);
+      updateActiveLink();   
+
+            // Game Over Overlay Control
+      const btnFimDeJogo = document.getElementById("btn-fim-de-jogo");
+      const gameOverOverlay = document.getElementById("game-over-overlay");
+      const btnCloseOverlay = document.getElementById("btn-close-overlay");
+
+      btnFimDeJogo.addEventListener("click", () => {
+        gameOverOverlay.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+
+      btnCloseOverlay.addEventListener("click", () => {
+        gameOverOverlay.classList.remove("active");
+        document.body.style.overflow = "";
+      });
+    </script>
