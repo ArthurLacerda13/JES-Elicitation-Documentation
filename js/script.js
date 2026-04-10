@@ -91,7 +91,13 @@ BANCO DE DADOS (principais tabelas):
 - time: id_time(PK), nome, id_atletica(FK), id_modalidade(FK)
 - time_atleta: id_time(FK,PK), matricula_atleta(FK,PK) — relacionamento N:N
 
-Responda sempre em português brasileiro. Se não souber algo específico sobre o projeto que não esteja nas informações acima, diga honestamente que não tem essa informação disponível. Nunca invente dados sobre o projeto.`;
+Responda sempre em português brasileiro. Se não souber algo específico sobre o projeto que não esteja nas informações acima, diga honestamente que não tem essa informação disponível. Nunca invente dados sobre o projeto.
+
+
+Os criadores do Projeto JES são os alunos do 4º período do curso de Análise e Desenvolvimento de Sistemas do IFPB, campus João Pessoa, Arthur, Davi, Miguel.
+`;
+
+
 
 // ─── Toggle Chat ─────────────────────────────────────────────────────────────
 function toggleChat() {
@@ -219,26 +225,38 @@ async function sendMessage() {
   input.value = "";
   isLoading = true;
   document.getElementById("jes-send-btn").disabled = true;
+
+  // Registra a mensagem do usuário no histórico ANTES de enviar
+  conversationHistory.push({ role: "user", content: userText });
   addMessage("user", userText);
   showTyping();
 
   try {
-    // Usa a variável global webAppUrl definida no topo do ficheiro
     const response = await fetch(webAppUrl, {
       method: "POST",
-      body: JSON.stringify({ message: userText }),
+      body: JSON.stringify({
+        message: userText,
+        history: conversationHistory,        // histórico completo da conversa
+        systemPrompt: JES_SYSTEM_PROMPT,     // contexto do projeto para o backend
+      }),
     });
 
     const data = await response.json();
     hideTyping();
 
     if (data.reply) {
+      // Registra a resposta da IA no histórico
+      conversationHistory.push({ role: "assistant", content: data.reply });
       addMessage("assistant", data.reply);
     } else {
+      // Remove a última mensagem do usuário do histórico se houve erro
+      conversationHistory.pop();
       addMessage("assistant", "⚠️ Erro na base de dados.");
     }
   } catch (err) {
     hideTyping();
+    // Remove a última mensagem do usuário do histórico se houve erro de rede
+    conversationHistory.pop();
     addMessage("assistant", "⚠️ Falha na conexão com a IA.");
   } finally {
     isLoading = false;

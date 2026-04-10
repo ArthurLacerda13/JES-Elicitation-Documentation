@@ -186,7 +186,9 @@
           <div
             class="flex flex-col md:flex-row gap-6 justify-center items-center"
           >
-            <button
+            <a
+              href="#personagens"
+              role="button"
               class="jump-hover bg-primary text-on-primary px-10 py-6 text-2xl font-headline font-black uppercase pixel-border shadow-[8px_8px_0px_0px_rgba(0,0,0,0.3)] flex items-center gap-4 active:translate-y-2 active:shadow-none transition-all"
             >
               <span>START GAME</span>
@@ -195,12 +197,7 @@
                 style="font-variation-settings: &quot;FILL&quot; 1"
                 >play_arrow</span
               >
-            </button>
-            <button
-              class="jump-hover bg-tertiary text-on-tertiary px-8 py-4 text-xl font-headline font-bold uppercase pixel-border shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] active:translate-y-1 transition-all"
-            >
-              CONTROLS
-            </button>
+            </a>
           </div>
         </div>
         <!-- Ground -->
@@ -480,15 +477,6 @@
                   >star</span
                 >
               </div>
-              <div
-                class="w-12 h-12 bg-primary pixel-border flex items-center justify-center"
-              >
-                <span
-                  class="material-symbols-outlined text-on-primary"
-                  style="font-variation-settings: &quot;FILL&quot; 1"
-                  >local_fire_department</span
-                >
-              </div>
             </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -541,6 +529,32 @@
               </div>
             </div>
           </div>
+          
+          <div
+              class="bg-white p-10 pixel-border shadow-[12px_12px_0px_0px_rgba(113,92,0,0.1)] flex gap-8 transition-all duration-300 cursor-pointer tactile-hover"
+            >
+              <div class="shrink-0">
+                <div
+                  class="w-20 h-20 bg-primary flex items-center justify-center pixel-border"
+                >
+                  <span
+                  class="material-symbols-outlined text-on-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >local_fire_department</span>
+                </div>
+              </div>
+              <div>
+                <h3
+                  class="font-headline text-3xl font-black text-tertiary mb-4 uppercase"
+                >
+                  DIGITALIZAÇÃO E GESTÃO HIERÁRQUICA
+                </h3>
+                <p class="text-on-surface-variant text-lg">
+                  Centralizar a gestão de atléticas, atletas e equipas através de um controlo de acesso baseado em funções (RBAC), permitindo que Capitães, Moderadores e Administradores operem num ambiente digital único e seguro.
+                </p>
+              </div>
+            </div>
+            
           <div
             class="mt-12 bg-primary p-8 md:p-16 pixel-border text-center mb-24"
           >
@@ -554,7 +568,7 @@
             >
               COLETAR ITEM
             </button>
-          </div>
+         </div>
         </div>
         <!-- Navigation Buttons -->
         <a
@@ -613,37 +627,22 @@
           <div class="space-y-4">
             <!-- FAQ Item 1 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-1"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-1" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-1">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: COMO É FEITA A CONEXÃO COM A 'FORJA' DO SUAP?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q1: COMO O SISTEMA VALIDA SE UM ATLETA ESTÁ MATRICULADO NO IFPB?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Utilizamos encantamentos de API REST com autenticação
-                      OAuth2, permitindo que o sistema valide o nível acadêmico
-                      de cada player em tempo real.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Através de integração via API com o sistema SUAP, verificando o status da matrícula em tempo real.
+                      Caso a integração com o SUAP não seja possível, a validação ocorre pela própria matrícula — cada
+                      código possui um padrão único identificador do curso.
                     </div>
                   </div>
                 </div>
@@ -651,37 +650,22 @@
             </div>
             <!-- FAQ Item 2 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-2"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-2" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-2">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: COMO PROTEGEMOS OS 'SCROLLS' DE DADOS (LGPD)?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q2: COMO UM CAPITÃO SÓ ACESSA OS DADOS DA SUA ATLÉTICA?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Aplicamos o 'Privacy by Design'. Os dados são
-                      criptografados com magias de alto nível, garantindo que
-                      apenas guardiões autorizados acessem as informações.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: O sistema usa RBAC (Role-Based Access Control). Administradores têm acesso total,
+                      moderadores têm acesso parcial e capitães enxergam apenas os dados da sua própria atlética.
+                      Cada "classe de herói" tem suas permissões mapeadas no back-end.
                     </div>
                   </div>
                 </div>
@@ -689,37 +673,22 @@
             </div>
             <!-- FAQ Item 3 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-3"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-3" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-3">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: O SISTEMA AGUENTA UM 'BOSS RAID' DE ACESSOS?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q3: O SISTEMA SUPORTA DIFERENTES TIPOS DE PONTUAÇÃO?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Com escalabilidade horizontal em nuvem, nossos
-                      servidores se multiplicam conforme a horda de inscritos
-                      cresce, mantendo o ping baixo e a performance alta.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Sim! O sistema lida com diferentes modalidades e seus modelos distintos de súmula.
+                      Basquete registra pontos, futsal registra gols, atletismo registra tempos. Cada esporte tem
+                      seu modelo de pontuação configurado individualmente.
                     </div>
                   </div>
                 </div>
@@ -727,37 +696,22 @@
             </div>
             <!-- FAQ Item 4 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-4"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-4" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-4">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: EXISTEM DIFERENTES CLASSES DE USUÁRIOS?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q4: COMO FUNCIONA O CONTROLE DE ACESSO PARA CARGOS ADMINISTRATIVOS?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Sim! Temos o 'Atleta' (DPS), o 'Capitão' (Líder da
-                      Party) e o 'Coordenador' (Game Master), cada um com
-                      habilidades e permissões únicas no painel.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: O back-end diferencia os usuários com base na matrícula. O cargo administrativo
+                      é vinculado ao código de matrícula do usuário, garantindo que apenas os
+                      coordenadores e membros autorizados acessem painéis restritos do sistema.
                     </div>
                   </div>
                 </div>
@@ -765,37 +719,22 @@
             </div>
             <!-- FAQ Item 5 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-5"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-5" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-5">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: O MAPA É ACESSÍVEL EM DISPOSITIVOS MOBILE?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q5: O SISTEMA EMITIRÁ RELATÓRIOS DE DESEMPENHO PARA A REITORIA?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Com design responsivo, a interface se adapta a qualquer
-                      tela, seja um pergaminho digital ou um smartphone de
-                      última geração.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Sim! O sistema contará com um painel dedicado para download de relatórios de
+                      participação de atletas com suas estatísticas, partidas e modalidades.
+                      Serão gerados também relatórios de engajamento e impacto social para a Reitoria.
                     </div>
                   </div>
                 </div>
@@ -803,37 +742,115 @@
             </div>
             <!-- FAQ Item 6 -->
             <div class="faq-item">
-              <input
-                class="faq-item-trigger hidden"
-                id="faq-6"
-                type="checkbox"
-              />
-              <div
-                class="faq-card bg-black text-white pixel-border-white relative overflow-hidden"
-              >
+              <input class="faq-item-trigger hidden" id="faq-6" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
                 <label class="block cursor-pointer p-6" for="faq-6">
-                  <div
-                    class="faq-card-header flex justify-between items-center"
-                  >
-                    <p
-                      class="font-headline text-sm md:text-lg uppercase tracking-wider"
-                    >
-                      Q: QUAIS PROTOCOLOS DE SEGURANÇA BLOQUEIAM OS MIMICS?
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q6: COMO O SISTEMA EVITA DUPLICIDADE DE ATLETAS NA MESMA MODALIDADE?
                     </p>
-                    <span
-                      class="material-symbols-outlined arrow-icon text-primary-fixed"
-                      >expand_more</span
-                    >
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
                   </div>
                 </label>
                 <div class="faq-accordion-content">
                   <div class="overflow-hidden p-6 pt-0">
-                    <div
-                      class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base"
-                    >
-                      A: Implementamos HTTPS, firewalls de aplicação e
-                      sanitização de inputs para banir qualquer tentativa de SQL
-                      Injection ou ataques das trevas.
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: O sistema verifica o ID único do atleta antes de registrar qualquer inscrição.
+                      Se o mesmo ID já estiver associado àquela modalidade, o cadastro é bloqueado
+                      automaticamente, impedindo duplicações e inscrições irregulares.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 7 -->
+            <div class="faq-item">
+              <input class="faq-item-trigger hidden" id="faq-7" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
+                <label class="block cursor-pointer p-6" for="faq-7">
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q7: COMO FUNCIONA A TROCA DE SENHA NO PRIMEIRO ACESSO?
+                    </p>
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Novos usuários fazem login com sua matrícula tanto no campo de usuário quanto
+                      no de senha na primeira vez. Após o primeiro acesso, são redirecionados para uma
+                      tela obrigatória de definição de senha segura personalizada.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 8 -->
+            <div class="faq-item">
+              <input class="faq-item-trigger hidden" id="faq-8" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
+                <label class="block cursor-pointer p-6" for="faq-8">
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q8: O SISTEMA PERMITE GERIR MÚLTIPLAS EDIÇÕES DOS JOGOS?
+                    </p>
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Sim! Através do modelo "Edição", o sistema permite definir qual é o período atual
+                      e mantém o histórico completo das edições anteriores — garantindo rastreabilidade e
+                      integridade histórica de todas as competições realizadas.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 9 -->
+            <div class="faq-item">
+              <input class="faq-item-trigger hidden" id="faq-9" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
+                <label class="block cursor-pointer p-6" for="faq-9">
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q9: COMO O PORTAL JES CONTRIBUI PARA A VISIBILIDADE DO IFPB?
+                    </p>
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Através da geração de relatórios de impacto social e desportivo e da divulgação
+                      centralizada de resultados, o Portal JES transforma o esporte em um ativo de
+                      marketing institucional — demonstrando integração, bem-estar e prestígio acadêmico
+                      em eventos estaduais e nacionais.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ Item 10 -->
+            <div class="faq-item">
+              <input class="faq-item-trigger hidden" id="faq-10" type="checkbox"/>
+              <div class="faq-card bg-black text-white pixel-border-white relative overflow-hidden">
+                <label class="block cursor-pointer p-6" for="faq-10">
+                  <div class="faq-card-header flex justify-between items-center">
+                    <p class="font-headline text-sm md:text-lg uppercase tracking-wider">
+                      Q10: O SISTEMA GERENCIA O USO DAS INSTALAÇÕES FÍSICAS?
+                    </p>
+                    <span class="material-symbols-outlined arrow-icon text-primary-fixed">expand_more</span>
+                  </div>
+                </label>
+                <div class="faq-accordion-content">
+                  <div class="overflow-hidden p-6 pt-0">
+                    <div class="mt-4 pt-4 border-t-2 border-dashed border-white/20 text-tertiary-fixed font-medium text-sm md:text-base">
+                      A: Sim! O banco de dados verifica os espaços disponíveis (quadras, ginásios) para
+                      agendamento, controlando conflitos de horário entre modalidades e garantindo que
+                      nenhuma instalação seja reservada duas vezes para o mesmo período.
                     </div>
                   </div>
                 </div>
@@ -949,7 +966,7 @@
           <p
             class="text-[9px] text-white/60 font-headline font-bold uppercase mt-6"
           >
-            © 2024 JES GESTÃO ESPORTIVA. INSPIRED BY WORLD 1-1.
+            © 2026 JES GESTÃO ESPORTIVA. INSPIRED BY WORLD 1-1.
           </p>
         </div>
         <div class="bg-black/80 p-6 pixel-border-white backdrop-blur-sm">
@@ -1242,7 +1259,7 @@
             </div>
             <div class="pt-20">
               <p class="font-pixel text-white text-[8px] uppercase">
-                Portal JES © 2024
+                Portal JES © 2026
               </p>
               <p class="font-pixel text-white text-[8px] uppercase mt-2">
                 The quest for management continues...
